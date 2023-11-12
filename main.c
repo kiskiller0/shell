@@ -54,7 +54,7 @@ int main(int argc, char **argv, char **env) {
             /* child is non-zero in the parent process, and zero in the child process */
             /* if (child) == if (we_are_in_parent) */
             if (!child)
-                execve(filepath, args, env); // exec will cause the current executing process to switch to the new one, no need for break
+                execve(filepath, args, env); /* exec will cause the current executing process to switch to the new one, no need for break */
             else
                 waitpid(child);
         }
