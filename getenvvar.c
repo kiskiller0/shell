@@ -1,7 +1,8 @@
 #include "main.h"
 #include <stddef.h>
 
-/** getenvvar - get a string representing an env var value
+/**
+ * getenvvar - get a string representing an env var value
  * @var: a char * value representing the name of the var
  * return: the value of the var in the env
  */
