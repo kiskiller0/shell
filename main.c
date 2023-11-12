@@ -24,7 +24,7 @@ int main(int argc, char **argv, char **env) {
             getline(&line, &letter_count, stdin);
 
             if (!line[0])
-                printf("exit!\n");
+								exit(0);
 
             line[strlen(line) - 1] = 0;
             line = strip(line);
