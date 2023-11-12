@@ -5,4 +5,5 @@ char *getenvvar(char *var, char **env);
 int is_space(char c);
 char **parse_string(char *str, char separator);
 char *cat(char *one, char *two);
+char *strip(char *word);
 #endif
