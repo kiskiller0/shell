@@ -15,4 +15,4 @@ the first time you run build.sh, it's gonna build and run the shell, if you need
 ./main
 ```
 
-Have fun! (idk how, just trying to be polite ¯\_(ツ)_/¯  )
+Have fun! (idk how, just trying to be polite ¯\\_(ツ)_/¯  )
