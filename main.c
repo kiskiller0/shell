@@ -3,11 +3,20 @@
 #include <stddef.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <fcntl.h>
 #include <string.h>
+#include <unistd.h>
 #include "main.h"
 
-
+/**
+ * main - 
+ * @argc: arg count
+ * @argv: arg vevtor
+ * @env: env vector
+ * return: 0 if successful, non-zero otherwise
+ */
+ 
 int main(int argc, char **argv, char **env) {
     char *line;
     char *filepath;
@@ -33,6 +42,19 @@ int main(int argc, char **argv, char **env) {
             if (!args)
                 continue;
 
+						/* handling special functions: exit, env */
+						if (!strcmp(line, "env"))
+						{
+							print_flattened_string(env);
+							continue;
+						}
+
+						if (!strcmp(line, "exit"))
+						{
+							printf("exiting ...\n");	
+							exit(0);
+						}
+
             filepath = get_file_path(parse_string(getenvvar("PATH", env) + strlen("PATH") + 1, ':'), args[0]);
             if (!filepath)
             {
@@ -56,7 +78,7 @@ int main(int argc, char **argv, char **env) {
             if (!child)
                 execve(filepath, args, env); /* exec will cause the current executing process to switch to the new one, no need for break */
             else
-                waitpid(child);
+                waitpid(child, NULL, 0);
         }
     }
 
